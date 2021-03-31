@@ -359,14 +359,14 @@ class SketchfabLoginProps(bpy.types.PropertyGroup):
             bpy.ops.wm.sketchfab_login('EXEC_DEFAULT')
 
 
-    vars()["email"] = StringProperty(
+    email: StringProperty(
         name="email",
         description="User email",
         default=""
     )
 
 
-    vars()["password"] = StringProperty(
+    password: StringProperty(
         name="password",
         description="User password",
         subtype='PASSWORD',
@@ -374,15 +374,15 @@ class SketchfabLoginProps(bpy.types.PropertyGroup):
         update=update_tr
     )
 
-    vars()["access_token"] = StringProperty(
+    access_token: StringProperty(
             name="access_token",
             description="oauth access token",
             subtype='PASSWORD',
             default=""
             )
 
-    vars()["status"] = StringProperty(name='', default='')
-    vars()["status_type"] = EnumProperty(
+    status: StringProperty(name='', default='')
+    status_type: EnumProperty(
             name="Login status type",
             items=(('ERROR', "Error", ""),
                        ('INFO', "Information", ""),
@@ -391,15 +391,15 @@ class SketchfabLoginProps(bpy.types.PropertyGroup):
             default='FILE_REFRESH'
             )
 
-    vars()["last_username"] = StringProperty(default="default")
-    vars()["last_password"] = StringProperty(default="default")
+    last_username: StringProperty(default="default")
+    last_password: StringProperty(default="default")
 
     skfb_api = SketchfabApi()
 
 
 class SketchfabBrowserPropsProxy(bpy.types.PropertyGroup):
     # Search
-    vars()["query"] = StringProperty(
+    query: StringProperty(
             name="",
             update=refresh_search,
             description="Query to search",
@@ -407,21 +407,21 @@ class SketchfabBrowserPropsProxy(bpy.types.PropertyGroup):
             options={'SKIP_SAVE'}
             )
 
-    vars()["pbr"] = BoolProperty(
+    pbr: BoolProperty(
             name="PBR",
             description="Search for PBR model only",
             default=False,
             update=refresh_search,
             )
 
-    vars()["categories"] = EnumProperty(
+    categories: EnumProperty(
             name="Categories",
             items=Config.SKETCHFAB_CATEGORIES,
             description="Show only models of category",
             default='ALL',
             update=refresh_search
             )
-    vars()["face_count"] = EnumProperty(
+    face_count: EnumProperty(
             name="Face Count",
             items=Config.SKETCHFAB_FACECOUNT,
             description="Determines which meshes are exported",
@@ -429,7 +429,7 @@ class SketchfabBrowserPropsProxy(bpy.types.PropertyGroup):
             update=refresh_search
             )
 
-    vars()["sort_by"] = EnumProperty(
+    sort_by: EnumProperty(
             name="Sort by",
             items=Config.SKETCHFAB_SORT_BY,
             description="Sort ",
@@ -437,21 +437,21 @@ class SketchfabBrowserPropsProxy(bpy.types.PropertyGroup):
             update=refresh_search
             )
 
-    vars()["animated"] = BoolProperty(
+    animated: BoolProperty(
             name="Animated",
             description="Show only models with animation",
             default=False,
             update=refresh_search
             )
 
-    vars()["staffpick"] = BoolProperty(
+    staffpick: BoolProperty(
             name="Staffpick",
             description="Show only staffpick models",
             default=False,
             update=refresh_search
             )
 
-    vars()["search_domain"] = EnumProperty(
+    search_domain: EnumProperty(
             name="",
             items=Config.SKETCHFAB_SEARCH_DOMAIN,
             description="Search domain ",
@@ -459,61 +459,61 @@ class SketchfabBrowserPropsProxy(bpy.types.PropertyGroup):
             update=refresh_search
             )
 
-    vars()["is_refreshing"] = BoolProperty(
+    is_refreshing: BoolProperty(
         name="Refresh",
         description="Refresh",
         default=False,
     )
-    vars()["expanded_filters"] = bpy.props.BoolProperty(default=False)
+    expanded_filters: bpy.props.BoolProperty(default=False)
 
 class SketchfabBrowserProps(bpy.types.PropertyGroup):
     # Search
-    vars()["query"] = StringProperty(
+    query: StringProperty(
             name="Search",
             description="Query to search",
             default=""
             )
 
-    vars()["pbr"] = BoolProperty(
+    pbr: BoolProperty(
             name="PBR",
             description="Search for PBR model only",
             default=False
             )
 
-    vars()["categories"] = EnumProperty(
+    categories: EnumProperty(
             name="Categories",
             items=Config.SKETCHFAB_CATEGORIES,
             description="Show only models of category",
             default='ALL',
              )
 
-    vars()["face_count"] = EnumProperty(
+    face_count: EnumProperty(
             name="Face Count",
             items=Config.SKETCHFAB_FACECOUNT,
             description="Determines which meshes are exported",
             default='ANY',
             )
 
-    vars()["sort_by"] = EnumProperty(
+    sort_by: EnumProperty(
             name="Sort by",
             items=Config.SKETCHFAB_SORT_BY,
             description="Sort ",
             default='LIKES',
             )
 
-    vars()["animated"] = BoolProperty(
+    animated: BoolProperty(
             name="Animated",
             description="Show only models with animation",
             default=False,
             )
 
-    vars()["staffpick"] = BoolProperty(
+    staffpick: BoolProperty(
             name="Staffpick",
             description="Show only staffpick models",
             default=False,
             )
 
-    vars()["search_domain"] = EnumProperty(
+    search_domain: EnumProperty(
             name="Search domain",
             items=Config.SKETCHFAB_SEARCH_DOMAIN,
             description="Search domain ",
@@ -521,27 +521,27 @@ class SketchfabBrowserProps(bpy.types.PropertyGroup):
             update=refresh_search
             )
 
-    vars()["status"] = StringProperty(name='status', default='idle')
+    status: StringProperty(name='status', default='idle')
 
-    vars()["use_preview"] = BoolProperty(
+    use_preview: BoolProperty(
         name="Use Preview",
         description="Show results using preview widget instead of regular buttons with thumbnails as icons",
         default=True
         )
 
     search_results = {}
-    vars()["current_key"] = StringProperty(name='current', default='current')
-    vars()["has_searched_next"] = BoolProperty(name='next', default=False)
-    vars()["has_searched_prev"] = BoolProperty(name='prev', default=False)
+    current_key: StringProperty(name='current', default='current')
+    has_searched_next: BoolProperty(name='next', default=False)
+    has_searched_prev: BoolProperty(name='prev', default=False)
 
     skfb_api = SketchfabLoginProps.skfb_api
     custom_icons = bpy.utils.previews.new()
-    vars()["has_loaded_thumbnails"] = BoolProperty(default=False)
+    has_loaded_thumbnails: BoolProperty(default=False)
 
-    vars()["is_latest_version"] = IntProperty(default=-1)
+    is_latest_version: IntProperty(default=-1)
 
-    vars()["import_status"] = StringProperty(name='import', default='')
-    vars()["is_plugin_enabled"] = BoolProperty(default=False)
+    import_status: StringProperty(name='import', default='')
+    is_plugin_enabled: BoolProperty(default=False)
 
 
 def list_current_results(self, context):
@@ -624,7 +624,8 @@ def draw_model_info(layout, model, context):
 
     row = ui_model_props.row()
     row.label(text="{}".format(model.title), icon='OBJECT_DATA')
-    row.operator("wm.sketchfab_view", text="", icon='LINKED').model_uid = model.uid
+    sketchfab_view_props = row.operator("wm.sketchfab_view", text="", icon='LINKED')
+    sketchfab_view_props.model_uid = model.uid
     
     ui_model_props.label(text='{}'.format(model.author), icon='ARMATURE_DATA')
 
@@ -659,7 +660,8 @@ def draw_model_info(layout, model, context):
     import_ops.label(text='')
     row = import_ops.row()
     row.scale_y = 2.0
-    row.operator("wm.sketchfab_download", icon=download_icon, text=downloadlabel, translate=False, emboss=True).model_uid = model.uid
+    sketchfab_download_props = row.operator("wm.sketchfab_download", icon=download_icon, text=downloadlabel, translate=False, emboss=True)
+    sketchfab_download_props.model_uid = model.uid
 
 
 def set_log(log):
@@ -879,8 +881,8 @@ class ImportModalOperator(bpy.types.Operator):
     bl_label = "Import glTF model into Sketchfab"
     bl_options = {'INTERNAL'}
 
-    gltf_path = StringProperty()
-    uid = StringProperty()
+    gltf_path: StringProperty()
+    uid: StringProperty()
 
     def exectue(self, context):
         print('IMPORT')
@@ -958,6 +960,7 @@ class SketchfabPanel(View3DPanel, bpy.types.Panel):
         self.layout.label(text="Download folder:")
         self.layout.label(text="  " + Config.SKETCHFAB_TEMP_DIR)
 
+
 class LoginPanel(View3DPanel, bpy.types.Panel):
     bl_idname = "VIEW3D_PT_sketchfab_login"
     bl_label = "Activation / Log in"
@@ -969,7 +972,8 @@ class LoginPanel(View3DPanel, bpy.types.Panel):
         skfb = get_sketchfab_props()
 
         if not skfb.is_plugin_enabled:
-            self.layout.operator('wm.skfb_enable', text='Activate add-on', icon="LINKED").enable = True
+            props = self.layout.operator('wm.skfb_enable', text='Activate add-on', icon="LINKED")
+            props.enable = True
         else:
             # LOGIN
             skfb_login = get_sketchfab_login_props()
@@ -978,7 +982,8 @@ class LoginPanel(View3DPanel, bpy.types.Panel):
             if skfb_login.skfb_api.is_user_logged():
                 login_row = layout.row()
                 login_row.label(text='Logged in as {}'.format(skfb_login.skfb_api.get_user_info()))
-                login_row.operator('wm.sketchfab_login', text='Logout', icon='DISCLOSURE_TRI_RIGHT').authenticate = False
+                login_props = login_row.operator('wm.sketchfab_login', text='Logout', icon='DISCLOSURE_TRI_RIGHT')
+                login_props.authenticate = False
                 if skfb_login.status:
                     layout.prop(skfb_login, 'status', icon=skfb_login.status_type)
             else:
@@ -988,9 +993,14 @@ class LoginPanel(View3DPanel, bpy.types.Panel):
                 ops_row = layout.row()
                 ops_row.operator('wm.sketchfab_signup', text='Create an account', icon='PLUS')
                 login_icon = "LINKED" if bpy.app.version < (2,80,0) else "USER"
-                ops_row.operator('wm.sketchfab_login', text='Log in', icon=login_icon).authenticate = True
+                
+                props = ops_row.operator('wm.sketchfab_login', text='Log in')
+                props.authenticate = True
+
                 if skfb_login.status:
-                    layout.prop(skfb_login, 'status', icon=skfb_login.status_type)
+                    layout.prop(skfb_login, 'status')
+                    # layout.prop(skfb_login, 'status', icon=skfb_login.status_type)
+
 
 class SketchfabBrowse(View3DPanel, bpy.types.Panel):
     bl_idname = "VIEW3D_PT_sketchfab_browse"
@@ -1052,7 +1062,7 @@ class SketchfabBrowse(View3DPanel, bpy.types.Panel):
 
     def draw(self, context):
         self.layout.enabled = get_plugin_enabled()
-
+        
         draw_search(self.layout, context)
 
         self.draw_results(self.layout, context)
@@ -1116,7 +1126,7 @@ def draw_results_icons(results, props, nbcol=4):
 
     dimx = nbcol if current else 0
     dimy = int(24 / nbcol) if current else 0
-    if dimx is not 0 and dimy is not 0:
+    if dimx != 0 and dimy != 0:
         for r in range(dimy):
             ro = results.row()
             for col in range(dimx):
@@ -1136,13 +1146,12 @@ def draw_results_icons(results, props, nbcol=4):
         results.row().label(text='No results')
         results.row()
 
-
 class SketchfabLogger(bpy.types.Operator):
     bl_idname = 'wm.sketchfab_login'
     bl_label = 'Sketchfab Login'
     bl_options = {'INTERNAL'}
 
-    authenticate = BoolProperty(default=True)
+    authenticate: BoolProperty(default=True)
 
     def execute(self, context):
         set_login_status('FILE_REFRESH', 'Login to your Sketchfab account...')
@@ -1155,6 +1164,7 @@ class SketchfabLogger(bpy.types.Operator):
             wm.sketchfab_api.last_password = "default"
             set_login_status('FILE_REFRESH', '')
         return {'FINISHED'}
+
 
 
 class SketchfabModel:
@@ -1189,7 +1199,7 @@ class SketchfabDownloadModel(bpy.types.Operator):
     bl_label = "Downloading"
     bl_options = {'INTERNAL'}
 
-    model_uid = bpy.props.StringProperty(name="uid")
+    model_uid: bpy.props.StringProperty(name="uid")
 
     def execute(self, context):
         skfb_api = context.window_manager.sketchfab_browser.skfb_api
@@ -1202,7 +1212,7 @@ class ViewOnSketchfab(bpy.types.Operator):
     bl_label = "View the model on Sketchfab"
     bl_options = {'INTERNAL'}
 
-    model_uid = bpy.props.StringProperty(name="uid")
+    model_uid: bpy.props.StringProperty(name="uid")
 
     def execute(self, context):
         import webbrowser
@@ -1351,7 +1361,7 @@ class SketchfabEnable(bpy.types.Operator):
     bl_label = "Sketchfab"
     bl_options = {'INTERNAL'}
 
-    enable = BoolProperty(default=True)
+    enable: BoolProperty(default=True)
     def execute(self, context):
         if self.enable:
             activate_plugin()
@@ -1360,42 +1370,42 @@ class SketchfabEnable(bpy.types.Operator):
 
 
 class SketchfabExportProps(bpy.types.PropertyGroup):
-    vars()["description"] = StringProperty(
+    description: StringProperty(
             name="Description",
             description="Description of the model (optional)",
             default="",
             maxlen=1024)
-    vars()["filepath"] = StringProperty(
+    filepath: StringProperty(
             name="Filepath",
             description="internal use",
             default="",
             )
-    vars()["selection"] = BoolProperty(
+    selection: BoolProperty(
             name="Selection only",
             description="Determines which meshes are exported",
             default=False,
             )
-    vars()["private"] = BoolProperty(
+    private: BoolProperty(
             name="Private",
             description="Upload as private (requires a pro account)",
             default=False,
             )
-    vars()["draft"] = BoolProperty(
+    draft: BoolProperty(
             name="Draft",
             description="Do not publish the model",
             default=True,
             )
-    vars()["password"] = StringProperty(
+    password: StringProperty(
             name="Password",
             description="Password-protect your model (requires a pro account)",
             default="",
             )
-    vars()["tags"] = StringProperty(
+    tags: StringProperty(
             name="Tags",
             description="List of tags (42 max), separated by spaces (optional)",
             default="",
             )
-    vars()["title"] = StringProperty(
+    title: StringProperty(
             name="Title",
             description="Title of the model (determined automatically if left empty)",
             default="",
